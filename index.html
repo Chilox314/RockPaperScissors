@@ -5,15 +5,37 @@
         <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <button>Scissors</button>
-        <button>Paper</button>
-        <button>Rock</button>
+        <button id="scissors">Scissors</button>
+        <button id="paper">Paper</button>
+        <button id="rock">Rock</button>
+        <br>
+        <div id="score">
+            Let's Play!
+        </div>
 
         <script>
             
-            let playerScore;
-            let computerScore;
-                
+            let playerScore = 0;
+            let computerScore = 0 ;
+            let playerInput;
+            
+            const score = document.querySelector("#score")
+            const rockButton = document.getElementById("rock");
+            const paperButton = document.getElementById("paper");
+            const scissorsButton = document.getElementById("scissors");
+
+            rockButton.addEventListener("click", function() {
+                playerInput = "rock"; game(playerInput);
+            }) 
+            paperButton.addEventListener("click", function() {
+                playerInput = "paper"; game(playerInput);
+            })
+            scissorsButton.addEventListener("click", function() {
+                playerInput = "scissors"; game(playerInput);
+            })
+
+            //buttoninput gets converted to string and saved in playerInput, then game(playerInput) gets called 
+
             function computerPlay() {
                 let randomNumber = Math.floor(Math.random()*3);
                 if (randomNumber === 0) {
@@ -69,24 +91,25 @@
             };
             
             function game() {
-                playerScore = 0;
-                computerScore = 0;
+
                 
-                console.log(play(prompt("Please enter rock, paper or scissors:")));
+                console.log(play(playerInput));
                 
+                score.removeChild(score.firstChild);
+                const finalScore = document.createElement("div");
+                finalScore.textContent = `Score: ${playerScore}:${computerScore}`;
+                score.appendChild(finalScore);
                 
-                console.log(`Final score: ${playerScore}:${computerScore}`);
-                
-                if (playerScore === computerScore) {
-                    console.log("It's a draw!")
-                }
-                else if (playerScore < computerScore) {
+                if (computerScore === 5) {
                     console.log("You've lost. Try again!")
                 }
-                else if (playerScore > computerScore) {
+                else if (playerScore === 5) {
                     console.log("You've won! Congratulations!")
                 }
                 //plays the game 5 times, takes prompt as input, announces final score and winner
+
+
+                //To do: Announce Selections, announce winner and reset
             }
         </script>
     </body>

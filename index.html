@@ -9,108 +9,15 @@
         <button id="paper">Paper</button>
         <button id="rock">Rock</button>
         <br>
+        <div id="input">
+
+        </div>
+
         <div id="score">
             Let's Play!
         </div>
+        <button id="reset">Reset:</button>
 
-        <script>
-            
-            let playerScore = 0;
-            let computerScore = 0 ;
-            let playerInput;
-            
-            const score = document.querySelector("#score")
-            const rockButton = document.getElementById("rock");
-            const paperButton = document.getElementById("paper");
-            const scissorsButton = document.getElementById("scissors");
-
-            rockButton.addEventListener("click", function() {
-                playerInput = "rock"; game(playerInput);
-            }) 
-            paperButton.addEventListener("click", function() {
-                playerInput = "paper"; game(playerInput);
-            })
-            scissorsButton.addEventListener("click", function() {
-                playerInput = "scissors"; game(playerInput);
-            })
-
-            //buttoninput gets converted to string and saved in playerInput, then game(playerInput) gets called 
-
-            function computerPlay() {
-                let randomNumber = Math.floor(Math.random()*3);
-                if (randomNumber === 0) {
-                    return "rock";
-                }
-                else if (randomNumber === 1) {
-                    return "paper";
-                }
-                else if (randomNumber === 2) {
-                    return "scissors";
-                }
-                else {
-                    alert("error!")
-                }
-                // chooses rock, paper or scissors randomly
-            };
-            
-            function play(playerSel) {
-                const playerSelection = playerSel.toLowerCase();
-                console.log("You played: " + playerSelection);
-                
-                const computerSelection = computerPlay();
-                console.log("The Computer played: " + computerSelection);
-                
-                if (playerSelection === computerSelection) {
-                    return "It's a draw!";
-                }
-                else if (playerSelection === "rock" && computerSelection === "scissors") {
-                    playerScore++;
-                    return "You win! Rock beats scissors!"
-                }
-                else if (playerSelection === "rock" && computerSelection === "paper")  {
-                    computerScore++;
-                    return "You lose! Paper beats rock"
-                }   
-                else if (playerSelection === "scissors" && computerSelection === "paper") {
-                    playerScore++;
-                    return "You win! Scissors beats paper!"
-                }   
-                else if (playerSelection === "scissors" && computerSelection === "rock") {
-                    computerScore++;
-                    return "You lose! Rock beats scissors!"
-                }
-                else if (playerSelection === "paper" && computerSelection === "rock") {
-                    playerScore++;
-                    return "You win! Paper beats rock!"
-                }
-                else if (playerSelection === "paper" && computerSelection === "scissors") {
-                    computerScore++;
-                    return "You lose! Scissors beats paper!"
-                }
-                // compares the players selection and the computers selection
-            };
-            
-            function game() {
-
-                
-                console.log(play(playerInput));
-                
-                score.removeChild(score.firstChild);
-                const finalScore = document.createElement("div");
-                finalScore.textContent = `Score: ${playerScore}:${computerScore}`;
-                score.appendChild(finalScore);
-                
-                if (computerScore === 5) {
-                    console.log("You've lost. Try again!")
-                }
-                else if (playerScore === 5) {
-                    console.log("You've won! Congratulations!")
-                }
-                //plays the game 5 times, takes prompt as input, announces final score and winner
-
-
-                //To do: Announce Selections, announce winner and reset
-            }
-        </script>
+        <script src="game.js"></script>
     </body>
 </html>

@@ -1,9 +1,8 @@
 
-let playerScore = 0;
+let playerScore = 0; 
 let computerScore = 0 ;
 let playerInput;
 let computerInput;
-const finalScore = document.createElement("div");
 let computerSelection;
 let playerSelection;
 const input = document.querySelector("#input");
@@ -80,27 +79,18 @@ function play(playerSel) {
 function game() {
     let result = play(playerInput);
     
-    const finalMsg = document.createElement("div");
-
     if (computerScore === 5) {
-        score.removeChild(finalScore);
-        finalMsg.textContent = `You've lost. Final Score: You ${playerScore}:${computerScore} Computer. Try again!`;
-        score.appendChild(finalMsg);
+        score.textContent = `You've lost. Final Score: You ${playerScore}:${computerScore} Computer. Try again!`;
         computerScore = 0;
         playerScore = 0;
     }
     else if (playerScore === 5) {
-        score.removeChild(finalScore);
-        finalMsg.textContent = `You've won! Final Score: You ${playerScore}:${computerScore} Computer. Congratulations!`;
-        score.appendChild(finalMsg);
+        score.textContent = `You've won! Final Score: You ${playerScore}:${computerScore} Computer. Congratulations!`;
         computerScore = 0;
         playerScore = 0;
     }
     else {
-        score.removeChild(score.firstChild);
-        finalScore.setAttribute('style', 'white-space: pre;');
-        finalScore.textContent = `Score: You ${playerScore}:${computerScore} Computer`;
-        score.appendChild(finalScore);
+        score.textContent = `Score: You ${playerScore}:${computerScore} Computer`;
         input.textContent = `You played: ${playerSelection}. The Computer played: ${computerSelection}. ${result}`
     }
     
@@ -108,10 +98,8 @@ function game() {
     reset.addEventListener("click", function() {
         playerScore = 0;
         computerScore = 0;
-        finalScore.textContent = `Score: You ${playerScore}:${computerScore} Computer`;
-        score.removeChild(score.firstChild);
-        score.appendChild(finalScore);
         input.textContent = "";
+        score.textContent = "";
     });
 
     //To do: Announce Selections, announce winner and reset

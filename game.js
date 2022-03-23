@@ -6,6 +6,7 @@ let computerInput;
 let computerSelection;
 let playerSelection;
 const input = document.querySelector("#input");
+const res = document.querySelector("#result")
 
 const score = document.querySelector("#score")
 const rockButton = document.getElementById("rock");
@@ -80,18 +81,23 @@ function game() {
     let result = play(playerInput);
     
     if (computerScore === 5) {
-        score.textContent = `You've lost. Final Score: You ${playerScore}:${computerScore} Computer. Try again!`;
+        input.textContent = `You've lost. Try again!`;
+        res.textContent = `Final Score: You ${playerScore}:${computerScore} Computer.`;
+        score.textContent = "To play again hit 'Reset' or choose a weapon!"
         computerScore = 0;
         playerScore = 0;
     }
     else if (playerScore === 5) {
-        score.textContent = `You've won! Final Score: You ${playerScore}:${computerScore} Computer. Congratulations!`;
+        input.textContent ="You've won! Congratulations!"
+        res.textContent = `Final Score: You ${playerScore}:${computerScore} Computer.`;
+        score.textContent = "To play again hit 'Reset' or choose a weapon!"
         computerScore = 0;
         playerScore = 0;
     }
     else {
         score.textContent = `Score: You ${playerScore}:${computerScore} Computer`;
-        input.textContent = `You played: ${playerSelection}. The Computer played: ${computerSelection}. ${result}`
+        input.textContent = `You played ${playerSelection}. The Computer played ${computerSelection}.`;
+        res.textContent = `${result}`;
     }
     
     const reset = document.querySelector("#reset")
@@ -100,6 +106,7 @@ function game() {
         computerScore = 0;
         input.textContent = "";
         score.textContent = "";
+        res.textContent = "";
     });
 
     //To do: Announce Selections, announce winner and reset

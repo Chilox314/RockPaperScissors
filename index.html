@@ -8,19 +8,28 @@
     <body>
         <div class="body">
             <div class="header">
-                <p>Choose your weapon!</p>
+                <h1>Rock, paper, scissors</h1>
             </div>
-            <div class="buttons">
-                <input type="image" src="img/scissors.png" id="scissors">
-                <input type="image" src="img/paper.png" id="paper">
-                <input type="image" src="img/rock.png" id="rock">
+            <div class="game">
+                <div class="buttons">
+                    <p class="centered fontsize">Choose your weapon:</p>
+                    <input type="image" src="img/rock.png" id="rock">
+                    <input type="image" src="img/paper.png" id="paper">
+                    <input type="image" src="img/scissors.png" id="scissors">
+                </div>
+                <div class="text">
+                    <div id="input">    
+                    </div>
+                    <div id="result">
+                    </div>
+                    <div id="score">
+                    </div>   
+                </div>
+                <button id="reset">Reset</button>
             </div>
-            <div id="input">
+            <div class="footer centered">
+                <p>Copyright &#169 Christian Henningsen, TheOdinProject</p>
             </div>
-            <div id="score">
-                Let's Play!
-            </div>
-            <button id="reset">Reset:</button>
         </div>
             
         <script src="game.js"></script>
